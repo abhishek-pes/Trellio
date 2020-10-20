@@ -6,8 +6,11 @@ import './App.css';
 import Register from "./components/layouts/Register"
 function App() {
   return (
-    <Router>
     <div className="App">
+    <header className="App-header">
+    <h1 class = "name">Trellio</h1>
+    </header>
+    <Router>
       <Route exact path = "/" component={Homepage}/>
       <section>
         <Switch>
@@ -15,11 +18,8 @@ function App() {
           <Route exact path = "/Register" component={Register}/>
         </Switch>
       </section>
-      <header className="App-header">
-      <h1 class = "name">Trellio</h1>
-      </header>
+      </Router>
     </div>
-    </Router>
   );
 }
 
