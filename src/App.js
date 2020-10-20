@@ -15,6 +15,9 @@ function App() {
           <Route exact path = "/Register" component={Register}/>
         </Switch>
       </section>
+      <header className="App-header">
+      <h1 class = "name">Trellio</h1>
+      </header>
     </div>
     </Router>
   );
