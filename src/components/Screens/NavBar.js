@@ -17,7 +17,9 @@ export default props => {
       <a className="menu-item" href="/">
         Search Projects
       </a>
-      <button className="logout">LogOut</button>
+      <span className="btn">
+      <button className="logout"><span>Logout</span></button>
+      </span>
     </Menu>
   );
 };

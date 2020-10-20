@@ -12,7 +12,7 @@ export const Homepage = () => {
         <div className="navbar">
             <a href="#about_page">ABOUT</a>
             <Link to="/Register" className="right">SIGN UP</Link>
-            <Link to="/Login" className="right">LOG IN</Link>
+            <Link to="/src/components/Screens/Mainscreen" className="right">LOG IN</Link>
         </div>
         <div className="main" id="about_page">
             <h1 className="heart">ABOUT TRELLIO</h1>
