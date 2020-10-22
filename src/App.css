@@ -1,0 +1,11 @@
+h1.name {
+  text-align: center;
+  margin: 0;
+  padding: 0 20px;
+  font-size: 50px;
+  color:rgb(85, 7, 230);
+  font-family: cursive;
+  font-weight: bolder;
+  text-shadow: 0 0 20px #640cd8ab;
+}
+
