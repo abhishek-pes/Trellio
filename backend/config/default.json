@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://trellio:trellio12!@@trellio.3ix87.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtsecret" : "mySecretToken"
+}

@@ -1,22 +1,63 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, {useState , useCallback} from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Homepage from './components/layouts/Homepage'
 import Login from './components/layouts/Login'
 import './App.css';
 import Register from "./components/layouts/Register"
+import {authContext} from "./context/auth-context"
+import POSTS from './components/screens/POSTS'
+import Learn from './components/layouts/Learn'
+import Project from './components/screens/Project'
+import Myprojects from './components/screens/Myprojects'
+
 function App() {
-  return (
-    <div className="App">
-        <Router>
-      <Route exact path = "/" component={Homepage}/>
-      <section>
+const [isLoggedIn, setIsLoggedIn] = useState()
+
+const login = useCallback(() => {
+  setIsLoggedIn(true)
+},[])
+
+const logout = useCallback(() => {
+  localStorage.clear()
+  setIsLoggedIn(false)
+},[])
+console.log(isLoggedIn)
+
+let routes
+
+
+
+if(isLoggedIn)
+{
+  routes = (
+    <Switch>
+      <Route exact path = "/POSTS" component={POSTS}/>
+      <Route exact path = "/Learn" component = {Learn}/>
+      <Route exact path = "/Projects" component = {Project}/>
+      <Route exact path = "/Myprojects" component = {Myprojects}/>
+      <Redirect to = '/POSTS'></Redirect>
+    </Switch>
+  )
+}else{
+  routes = (
         <Switch>
           <Route exact path = "/Register" component={Register}/>
           <Route exact path = "/Login" component = {Login}/>
+          <Route exact path = "/Learn" component = {Learn}/>
+          <Redirect to = '/'></Redirect>
         </Switch>
-      </section>
+  )
+}
+
+  return (
+      <authContext.Provider value= {{isLoggedIn : isLoggedIn , login : login , logout : logout}}>
+        <Router>
+        <Route exact path = "/" component={Homepage}/>
+        <main>
+          {routes}
+        </main>
       </Router>
-    </div>
+      </authContext.Provider>
   );
 }
 

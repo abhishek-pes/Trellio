@@ -1,18 +1,54 @@
-import React from "react";
+import React,{useState} from "react";
 import "./login.css";
 import logo from './images/icon.svg'; 
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 
-export const Register = () => {
+function Register() {
+
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [name,setName] = useState('')
+
+
+    let history = useHistory();
+    const submitHandler = event =>
+    {
+        try{
+        event.preventDefault()
+
+        fetch("http://localhost:5000/api/users", {
+
+        method: "post",
+
+        body: JSON.stringify({
+             name,email, password
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+        })
+        .then((res) => res.json())
+        .then(res => {
+            console.log(res)
+            alert('USER CREATED')
+            history.push("/Login")
+        })
+    }
+    catch(err){            
+      alert('USER ALREADY EXISTS')
+  }
+
+     }
+
+
   return (
     <div>
-      <form class="box" action="index.html" method="post">
+      <form className="box" onSubmit = {submitHandler}>
         <h1>Sign Up</h1>
-        <input type="text" name="" placeholder="Username"></input>
-        <input type="email" name="" placeholder="E-mail"></input>
-        <input type="password" name="" placeholder="Password"></input>
-        <input type="password" name="" placeholder="confirm Password"></input>
-        <input type="submit" name="" value="Login"></input>
+        <input type="text" name="" placeholder="Username" required onChange = {(e) =>setName(e.target.value)}></input>
+        <input type="email" name="" placeholder="E-mail" onChange = {(e) => {setEmail(e.target.value)}}></input>
+        <input type="password" name="" placeholder="Password"onChange ={(e)=>{setPassword(e.target.value)}}></input>
+        <input type="submit" name="" value="Register"></input>
         <p>
           already have an account? <Link to="/Login">Sign in</Link>
         </p>
@@ -22,5 +58,5 @@ export const Register = () => {
       </footer>
     </div>
   );
-};
+}
 export default Register;

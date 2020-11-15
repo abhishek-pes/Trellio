@@ -1,19 +1,22 @@
-import React from "react";
+import React,{useContext} from "react";
 import "./homepage.css";
 import logo from './images/icon.svg'; 
 import {Link} from "react-router-dom";
+import Navbar from './Navbar'
+import {authContext} from '../../context/auth-context'
 export const Homepage = () => {
+  const auth = useContext(authContext)
+  if(localStorage.getItem('token'))
+  {
+    auth.login()
+  }
   return (
     <div>
         <div className="header">
             <h1>Trellio.</h1>
             <h3>MEET . CONNECT . COLLABORATE</h3>
         </div>
-        <div className="navbar">
-            <a href="#about_page">ABOUT</a>
-            <Link to="/Register" className="right">SIGN UP</Link>
-            <Link to="/Login" className="right">LOG IN</Link>
-        </div>
+        <Navbar />
         <div className ="title">
         <h1 className="heart">ABOUT TRELLIO</h1>
         </div>
@@ -25,6 +28,10 @@ export const Homepage = () => {
             <span className="buttons">
             <Link to="/Register">
             <button className="button"><span>REGISTER</span></button></Link>
+            {auth.isLoggedIn &&(
+            <Link to="/Login">
+            <button className="button"><span>LOGIN</span></button></Link>
+            )}
             <Link to="/Login">
             <button className="button"><span>LOGIN</span></button></Link>
             </span>
