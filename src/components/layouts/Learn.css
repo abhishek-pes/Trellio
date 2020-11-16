@@ -1,4 +1,3 @@
-
 .header {
     padding: 20px;
     text-align: center; 
@@ -23,11 +22,11 @@
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
 }
 .container{
-    position: sticky;
+    position: relative;
 }
-img{
+.container img{
     width: 100%;
-    display: block;
+    display: flex;
     border-radius: 20px 20px 0 0;
 }
 .container:after{
@@ -38,28 +37,16 @@ img{
     top: 0;
     left: 0;
     border-radius: 20px 20px 0 0;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 .card1>.container:after{
-    background-image: linear-gradient(
-        135deg,
-        #0100ec,
-        #fb36f4
-    );
+    background-image: linear-gradient(135deg, #0100ec,#fb36f4);
 }
 .card2>.container:after{
-    background-image: linear-gradient(
-        135deg,
-        #2bdce3,
-        #42ffdb
-    );
+    background-image: linear-gradient(135deg, #bff822, #42ffdb);
 }
 .card3>.container:after{
-    background-image: linear-gradient(
-        135deg,
-        #ffab1d,
-        #f8501c
-    );
+    background-image: linear-gradient(135deg,#890cc4,#f8501c);
 }
 .details{
     padding: 20px 10px;
@@ -78,40 +65,36 @@ img{
 }
 
 .tags {
-    margin: 1rem 0 2rem;
-    padding: .5rem 0 1rem;
-    line-height: 2;
-    margin-bottom: 0;
+    margin-left: 70px;
 }
 
-.tags button {
-    font-style: normal;
+.tags .Visitbtn {
     font-weight: 700;
-    font-size: .5rem;
+    font-size: 5px;
     color: #7a7a8c;
-    font-size: .66rem;
+    font-size: 12px;
     border: 3px solid #28242f;
-    border-radius: 2rem;
+    border-radius: 12px;
     padding: .2rem .85rem .25rem;
-    position: relative;
+    border: 2px solid #1abc9c;
 }
 
-.tags button:hover {
-    background: linear-gradient(90deg,#ff8a00,#e52e71);
+.tags .Visitbtn:hover {
+    background: linear-gradient(90deg,#ff8a00,#da0909);
     text-shadow: none;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     background-clip: text;
-    border-color: white;
+    border-color: #3498db;
 }
 
-.Visitbtn {
-    background-color: rgba(249, 249, 250);
+.tags .Visitbtn {
+    background-color: #1a1b1b;
     border-radius: 50px;
 }
 
-.Visitbtn:focus {
+.tags .Visitbtn:focus {
     outline: none;
 }

@@ -37,7 +37,9 @@ function Login() {
             else{alert('INVALID CREDENTIALS')}
         })
     }
-    catch(err){}
+    catch(err){
+        alert(err.msg)
+    }
 
      }
     
@@ -48,7 +50,7 @@ function Login() {
                 <input type="email" name="" placeholder="E-mail Addres" required onChange = {(e) => setEmail(e.target.value)} ></input>
                 <input type="password" name="" placeholder="Password" onChange= {(e) => setPassword(e.target.value)} required></input>
                <input type="submit" name="" value="Login"></input>
-                <p>don't have an account? <Link to="/Register">Register</Link></p>
+                <p>Don't have an account? <Link to="/Register">Register</Link></p>
             </form>
             <footer>
                     <Link to="/"><img src={logo} height="70px" width="70px" alt="icon"></img></Link>

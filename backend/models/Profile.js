@@ -15,6 +15,15 @@ const ProfileSchema =new mongoose.Schema({
     likes:{
       type:Number
     },
+    techStack:{
+      type:String,
+    },
+    git:{
+      type:String
+    },
+    rating:{
+      type:String
+    },
     date: {
         type: Date,
         default: Date.now

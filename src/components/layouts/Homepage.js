@@ -10,6 +10,10 @@ export const Homepage = () => {
   {
     auth.login()
   }
+  else
+  {
+    auth.logout()
+  }
   return (
     <div>
         <div className="header">

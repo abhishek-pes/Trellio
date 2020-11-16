@@ -42,6 +42,11 @@ function Myprojects() {
         catch(err){}
         history.push("/Myprojects")
     }
+
+    const updateForm = (pid)=>{
+        localStorage.setItem('pid',pid);
+        history.push("/UpdatePosts")
+    }
     let h = ""
     if(data.length === 0)
     {
@@ -57,19 +62,28 @@ function Myprojects() {
     
    { data.map((response) => {
        return(
-       <div className="cards" key={response._id}>
-           <div className="card card1">
-               <div className="details">
-                   <span>
-                   <img src= {response.user.avatar} alt="logo"></img><br></br>
-                   author : {response.user.name}<br></br>
-                   posted on : {response.date}
-                   <p>posted id : {response._id}</p>
-                   </span>
-                   <h2>  {response.title} </h2>
-                   <h3> {response.desc} </h3>
+        <div className="cards" key={response._id}>
+        <div className="card card1">
+            <div className="details">
+                <span>
+                <img src= {response.user.avatar} alt="logo"></img><br></br>
+                author : {response.user.name}<br></br>
+                posted on : {response.date}
+                </span>
+                <br></br><br></br>
+                <hr></hr>
+                <br></br>
+                <h2> {response.title} </h2>
+                <h3> {response.desc} </h3>
+                <h3>Tech Stack: {response.techStack}</h3>
+                <h3>Rating : {response.rating}</h3>
+                <hr></hr>
                <div className="tags">
                    <button className="Visitbtn" onClick = {() => submitHandler(response._id)}>DELETE</button>
+                   <button className="Visitbtn" onClick = {() => updateForm(response._id)}>UPDATE</button>
+                   <a href = {response.git} rel="noopener noreferrer" target="_blank">
+                            <button className="Visitbtn">View Project</button>
+                        </a>
                </div>
                </div>
    </div>

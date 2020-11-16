@@ -5,10 +5,11 @@ import Login from './components/layouts/Login'
 import './App.css';
 import Register from "./components/layouts/Register"
 import {authContext} from "./context/auth-context"
-import POSTS from './components/screens/POSTS'
+import POSTS from './components/Screens/POSTS'
 import Learn from './components/layouts/Learn'
-import Project from './components/screens/Project'
-import Myprojects from './components/screens/Myprojects'
+import Project from './components/Screens/Project'
+import Myprojects from './components/Screens/Myprojects'
+import UpsatePosts from './components/Screens/UpdatePosts'
 
 function App() {
 const [isLoggedIn, setIsLoggedIn] = useState()
@@ -35,7 +36,8 @@ if(isLoggedIn)
       <Route exact path = "/Learn" component = {Learn}/>
       <Route exact path = "/Projects" component = {Project}/>
       <Route exact path = "/Myprojects" component = {Myprojects}/>
-      <Redirect to = '/POSTS'></Redirect>
+      <Route exact path = "/UpdatePosts" component={UpsatePosts}/>
+      <Redirect to = '/Projects'></Redirect>
     </Switch>
   )
 }else{

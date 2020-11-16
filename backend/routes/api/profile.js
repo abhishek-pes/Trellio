@@ -54,7 +54,11 @@ router.post('/', [auth,
 
         const {
             title,
-            desc
+            desc,
+            techStack,
+            git,
+            rating
+            
         } = req.body;
 
         //Build profile objects
@@ -62,6 +66,9 @@ router.post('/', [auth,
         profileFields.user = req.user.id;
         if (title) profileFields.title = title;
         if (desc) profileFields.desc = desc;
+        if (techStack) profileFields.techStack = techStack;
+        if (git) profileFields.git = git;
+        if (rating) profileFields.rating = rating;
         profileFields.likes = 0
         try {
             // let profile = await Profile.findOne({ user: req.user.id })
@@ -89,6 +96,62 @@ router.post('/likes',auth,async (req,res)=>{
     return res.json(likes)
 })
 
+
+
+//update the profile posts
+router.post('/update/:id', [auth,
+    [
+        check('desc', 'desc is required').not().isEmpty()
+
+    ]], async (req, res) => {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        }
+
+        const {
+            title,
+            desc,
+            techStack,
+            git,
+            rating
+            
+        } = req.body;
+
+        //Build profile objects
+        const profileFields = {}
+        profileFields.user = req.user.id;
+        if (title) profileFields.title = title;
+        if (desc) profileFields.desc = desc;
+        if (techStack) profileFields.techStack = techStack;
+        if (git) profileFields.git = git;
+        if (rating) profileFields.rating = rating;
+        profileFields.likes = 0
+        profileFields.date =  Date.now()
+        try {
+            Profile.findByIdAndUpdate(req.params.id , { $set: profileFields }, { new: true })
+            .then((doc) => {
+                if (!doc) {
+                    res.send("Not found")
+                }
+                res.send(doc)
+            }).catch((err) => {
+                console.log(err.message)
+                res.send({ error: err.message })
+            })
+        }
+        catch (err) {
+            console.error(err.message);
+            res.status(500).send('server error')
+        }
+    })
+
+
+router.post('/likes',auth,async (req,res)=>{
+    console.log(req.params.id)
+    const likes = await Profile.findOne({ user: req.user.id })
+    return res.json(likes)
+})
 
 //@route  api/profile
 //get  all profile
