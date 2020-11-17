@@ -14,7 +14,7 @@ function Login() {
         try{
         event.preventDefault()
 
-        fetch("http://localhost:5000/api/auth", {
+        fetch("/api/auth", {
 
         method: "post",
 

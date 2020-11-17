@@ -19,7 +19,7 @@ function POSTS() {
     try {
       event.preventDefault();
 
-      fetch("http://localhost:5000/api/profile", {
+      fetch("/api/profile", {
         method: "post",
 
         body: JSON.stringify({

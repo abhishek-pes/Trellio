@@ -8,7 +8,7 @@ function Myprojects() {
     const [data,setdata] = useState([])
     function getposts()
     {
-    fetch("http://localhost:5000/api/profile/me/",{
+    fetch("/api/profile/me/",{
         method:"get",
         headers:{
             "x-auth-token":localStorage.getItem('token')
@@ -33,7 +33,7 @@ function Myprojects() {
     const submitHandler = (pid) => {
         try{
             console.log(pid)
-            const url = "http://localhost:5000/api/profile/delete/"+pid
+            const url = "/api/profile/delete/"+pid
             fetch(url, {
     
             method: "delete",
