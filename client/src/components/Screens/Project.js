@@ -119,43 +119,43 @@ function Post() {
       {
         // eslint-disable-next-line
         searchdata &&responses.filter((res) => res.techStack == search.map((s) => s)).map((response) => {
-              const mailser = "mailto:" + response.user.email;
-              return (
-                <div className="cards" key={response._id}>
-                  <div className="card card1">
-                    <div className="details">
-                      <span>
-                        <img src={response.user.avatar} alt="logo"></img>
-                        <br></br>
-                        author : {response.user.name}
-                        <br></br>
-                        posted on : {response.date}
-                      </span>
-                      <br></br>
-                      <br></br>
-                      <hr></hr>
-                      <br></br>
-                      <h2> {response.title} </h2>
-                      <p> {response.desc} </p>
-                      <p>Tech Stack: {response.techStack}</p>
-                      <p>Rating : {response.rating}</p>
-                      <hr></hr>
-                      <div className="tags">
-                        <a href={mailser}>
-                          <button className="random">Connect</button>
-                        </a>
-                        <a
-                          href={response.git}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        >
-                          <button className="random">View Project</button>
-                        </a>
-                      </div>
-                    </div>
+          const mailser = "mailto:" + response.user.email;
+          return (
+            <div className="cards5" key={response._id}>
+              <div className="card4">
+                <div className="details4">
+                  <span>
+                    <img src={response.user.avatar} alt="logo"></img>
+                    <br></br>
+                    author : {response.user.name}
+                    <br></br>
+                    posted on : {response.date}
+                  </span>
+                  <br></br>
+                  <br></br>
+                  <hr></hr>
+                  <br></br>
+                  <h2> {response.title} </h2>
+                  <p> {response.desc} </p>
+                  <p>Tech Stack: {response.techStack}</p>
+                  <p>Rating : {response.rating}</p>
+                  <hr></hr>
+                  <div className="tags4">
+                    <a href={mailser}>
+                      <button className="random">Connect</button>
+                    </a>
+                    <a
+                      href={response.git}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <button className="random">View Project</button>
+                    </a>
                   </div>
                 </div>
-              );
+              </div>
+            </div>
+          );
             })
       }
       </div>
