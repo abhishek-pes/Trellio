@@ -9,9 +9,14 @@ export default props => {
   const auth = useContext(authContext)
   return (
     <Menu {...props}>
+      {!auth.isLoggedIn &&(
       <a className="menu-item" href="/">
-        My Profile
+        Home
       </a>
+      )}
+       {auth.isLoggedIn && (
+        <Link to = "/Todo" className ="right" >Todo</Link>
+    )}
       <Link to ="/Learn" className="menu-item">
         Learn Tech
       </Link>
@@ -28,6 +33,16 @@ export default props => {
         <Link to = "/" className ="right" >
         <span className="btn">
         <button className="logout" onClick = {() => auth.logout()}><span>Logout</span></button>
+        </span>
+        </Link>
+    )}
+   
+    {!auth.isLoggedIn && (
+        <Link to = "/" className ="right" >
+        <span className="btn">
+          <Link to="/Login">
+        <button className="logout"><span>Sign In</span></button>
+        </Link>
         </span>
         </Link>
     )}

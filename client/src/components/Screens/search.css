@@ -19,7 +19,7 @@
   }
   
   .searchTerm:focus{
-    color: black;
+    color: #00B4CC;
   }
   
   .searchButton {

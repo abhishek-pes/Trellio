@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./POSTS.css";
 import SideNav from "./SideNav";
 
-function POSTS() {
+function UpdatePosts() {
 
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
@@ -11,15 +11,13 @@ function POSTS() {
   const [git, setGit] = useState("");
   const [rating, setRating] = useState("");
 
- 
-  //console.log(userdata)
- 
+  
   let history = useHistory();
   const submitHandler = (event) => {
     try {
       event.preventDefault();
 
-      fetch("http://localhost:5000/api/profile", {
+      fetch("http://localhost:5000/api/profile/update/"+localStorage.getItem("pid"), {
         method: "post",
 
         body: JSON.stringify({
@@ -37,67 +35,50 @@ function POSTS() {
         .then((res) => res.json())
         .then((res) => {
           //console.log(res)
-          history.push("/Projects");
+          localStorage.removeItem('pid');
+          history.push("/Myprojects");
         });
     } catch (err) {}
   };
 
   return (
-    // <div>
-    //     <Navbar />
-
-    //     <p>logged id : {i}</p>
-    //     <p>logged in is  {name}</p>
-    //     <div>
-    //         <form onSubmit = {submitHandler}>
-    //         <label>Project Details</label>
-    //         <input type="text" onChange = {(e) => setDesc(e.target.value)}></input><br></br>
-    //         <label>Project Title</label>
-    //         <input type="text" onChange = {(e) => setTitle(e.target.value)}>
-    //         </input>
-    //         <br></br>
-    //         <input type = "submit" value = "submit"></input>
-    //         </form>
-    //     </div>
-
-    // </div>
     <div>
       <div className="header">
         <h1>Trellio.</h1>
         <h3>MEET . CONNECT . COLLABORATE</h3>
       </div>
       <SideNav />
-      <div class="wrapper">
-        <div class="title">
-          <h1>Start New Project</h1>
+      <div className="wrapper">
+        <div className="title">
+          <h1>Update Your Project Details</h1>
         </div>
         <form onSubmit={submitHandler}>
-          <div class="contact-form">
-            <div class="input-fields">
+          <div className="contact-form">
+            <div className="input-fields">
               <input
                 type="text"
-                class="input"
+                className="input"
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Project Title"
                 required
               ></input>
               <input
                 type="text"
-                class="input"
+                className="input"
                 onChange={(e) => setDesc(e.target.value)}
                 placeholder="Description"
                 required
               ></input>
               <input
                 type="text"
-                class="input"
+                className="input"
                 placeholder="Technologies Used"
                 onChange={(e) => settech(e.target.value)}
                 required
               ></input>
               <input
                 type="url"
-                class="input"
+                className="input"
                 placeholder="github project link"
                 onChange={(e) => setGit(e.target.value)}
                 required
@@ -115,8 +96,8 @@ function POSTS() {
               <br></br>
               <input
                 type="submit"
-                class="createbtn"
-                value="Create Project"
+                className="createbtn"
+                value="Update Project"
               ></input>
             </div>
           </div>
@@ -126,4 +107,4 @@ function POSTS() {
   );
 }
 
-export default POSTS;
+export default UpdatePosts;

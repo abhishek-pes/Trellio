@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SideNav from "./SideNav";
-import "./Learn.css";
+import "./Project.css";
 import "./search.css"
 
 
@@ -35,13 +35,13 @@ function Post() {
       .then((res) => setResponses(res));
   }, []);
   //console.log(responses)
-  const search = responses
+  var search = responses
     .map((res) => res.techStack)
-    .map((res) =>  res)
+    .map((res) => res)
     .filter((s) => s.includes(searchdata));
-  //  const  search1 = search.map((s) => s.toLowerCase() )
-  // console.log(search1)
-  // const finaldata = responses.filter((res)=> toString(res.techStack).toLowerCase() == (search1.map((s)=>s)) )
+  search = Array.from( new Set(search))
+  // console.log(search)
+  // const finaldata = responses.filter((res)=> res.techStack == (search.map((s)=>s)) )
   // console.log(finaldata)
 
   //console.log("search query: "+ searchdata)
@@ -67,7 +67,7 @@ function Post() {
             onChange={(e) => setSearchData(e.target.value)}
           ></input>
 
-               <img src="https://www.flaticon.com/svg/static/icons/svg/93/93642.svg" className="searchButton" alt="logo"></img>
+               <img src="https://www.flaticon.com/svg/static/icons/svg/93/93642.svg" className="searchButton" alt="logo_Search"></img>
 
 
         </div>
@@ -79,9 +79,9 @@ function Post() {
         responses.map((response) => {
           const mailser = "mailto:" + response.user.email;
           return (
-            <div className="cards" key={response._id}>
-              <div className="card card1">
-                <div className="details">
+            <div className="cards5" key={response._id}>
+              <div className="card4">
+                <div className="details4">
                   <span>
                     <img src={response.user.avatar} alt="logo"></img>
                     <br></br>
@@ -94,20 +94,20 @@ function Post() {
                   <hr></hr>
                   <br></br>
                   <h2> {response.title} </h2>
-                  <h3> {response.desc} </h3>
-                  <h3>Tech Stack: {response.techStack}</h3>
-                  <h3>Rating : {response.rating}</h3>
+                  <p> {response.desc} </p>
+                  <p>Tech Stack: {response.techStack}</p>
+                  <p>Rating : {response.rating}</p>
                   <hr></hr>
-                  <div className="tags">
+                  <div className="tags4">
                     <a href={mailser}>
-                      <button className="Visitbtn">Connect</button>
+                      <button className="random">Connect</button>
                     </a>
                     <a
                       href={response.git}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <button className="Visitbtn">View Project</button>
+                      <button className="random">View Project</button>
                     </a>
                   </div>
                 </div>
@@ -136,20 +136,20 @@ function Post() {
                       <hr></hr>
                       <br></br>
                       <h2> {response.title} </h2>
-                      <h3> {response.desc} </h3>
-                      <h3>Tech Stack: {response.techStack}</h3>
-                      <h3>Rating : {response.rating}</h3>
+                      <p> {response.desc} </p>
+                      <p>Tech Stack: {response.techStack}</p>
+                      <p>Rating : {response.rating}</p>
                       <hr></hr>
                       <div className="tags">
                         <a href={mailser}>
-                          <button className="Visitbtn">Connect</button>
+                          <button className="random">Connect</button>
                         </a>
                         <a
                           href={response.git}
                           rel="noopener noreferrer"
                           target="_blank"
                         >
-                          <button className="Visitbtn">View Project</button>
+                          <button className="random">View Project</button>
                         </a>
                       </div>
                     </div>
@@ -159,6 +159,7 @@ function Post() {
             })
       }
       </div>
+      
     </div>
   );
 }

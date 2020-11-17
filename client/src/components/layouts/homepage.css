@@ -142,4 +142,9 @@ body
     to { transform: scale(1.2); }
     to {transform: scale(0.8);}
   }
+
+   .trellio{
+    margin-top: 3%;
+    margin-left: 50%;
+  }
   

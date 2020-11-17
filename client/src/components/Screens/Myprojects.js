@@ -1,24 +1,30 @@
 import React,{useState,useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import Navbar from '../layouts/Navbar'
-import "./Learn.css";
+import SideNav from "./SideNav";
+import "./Project.css";
 
 function Myprojects() {
     
     const [data,setdata] = useState([])
-
+    function getposts()
+    {
+    fetch("http://localhost:5000/api/profile/me/",{
+        method:"get",
+        headers:{
+            "x-auth-token":localStorage.getItem('token')
+        }
+    })
+    .then((res) => res.json())
+    .then((res) => {
+        setdata(res)
+    })
+}
     useEffect(() => {
-        fetch("http://localhost:5000/api/profile/me/",{
-            method:"get",
-            headers:{
-                "x-auth-token":localStorage.getItem('token')
-            }
-        })
-        .then((res) => res.json())
-        .then((res) => {
-            setdata(res)
-        })
-    },[data])
+        
+    getposts();
+        // eslint-disable-next-line
+    },[]);
+
 
    // console.log(data)
 
@@ -37,10 +43,10 @@ function Myprojects() {
             })
             .then(res => {
                 alert("deleted")
+                getposts();
             })
         }
         catch(err){}
-        history.push("/Myprojects")
     }
 
     const updateForm = (pid)=>{
@@ -57,14 +63,14 @@ function Myprojects() {
         <div className="header">
        <h1>MY PROJECTS</h1>
        </div>
-           <Navbar />
+           <SideNav />
         <h1>{h}</h1>
     
    { data.map((response) => {
        return(
-        <div className="cards" key={response._id}>
-        <div className="card card1">
-            <div className="details">
+        <div className="cards4" key={response._id}>
+        <div className="card4">
+            <div className="details4">
                 <span>
                 <img src= {response.user.avatar} alt="logo"></img><br></br>
                 author : {response.user.name}<br></br>
@@ -74,15 +80,15 @@ function Myprojects() {
                 <hr></hr>
                 <br></br>
                 <h2> {response.title} </h2>
-                <h3> {response.desc} </h3>
-                <h3>Tech Stack: {response.techStack}</h3>
-                <h3>Rating : {response.rating}</h3>
+                <p> {response.desc} </p>
+                <p>Tech Stack: {response.techStack}</p>
+                <p>Rating : {response.rating}</p>
                 <hr></hr>
-               <div className="tags">
-                   <button className="Visitbtn" onClick = {() => submitHandler(response._id)}>DELETE</button>
-                   <button className="Visitbtn" onClick = {() => updateForm(response._id)}>UPDATE</button>
+               <div className="tags4">
+                   <button className="random" onClick = {() => submitHandler(response._id)}>DELETE</button>
+                   <button className="random" onClick = {() => updateForm(response._id)}>UPDATE</button>
                    <a href = {response.git} rel="noopener noreferrer" target="_blank">
-                            <button className="Visitbtn">View Project</button>
+                            <button className="random">View Project</button>
                         </a>
                </div>
                </div>

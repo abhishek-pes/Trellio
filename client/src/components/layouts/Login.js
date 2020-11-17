@@ -37,9 +37,7 @@ function Login() {
             else{alert('INVALID CREDENTIALS')}
         })
     }
-    catch(err){
-        alert(err.msg)
-    }
+    catch(err){}
 
      }
     

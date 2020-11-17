@@ -68,7 +68,8 @@
     margin-left: 70px;
 }
 
-.tags .Visitbtn {
+
+.Visitbtn {
     font-weight: 700;
     font-size: 5px;
     color: #7a7a8c;
@@ -77,9 +78,10 @@
     border-radius: 12px;
     padding: .2rem .85rem .25rem;
     border: 2px solid #1abc9c;
+    margin-top: 10%;
 }
 
-.tags .Visitbtn:hover {
+.Visitbtn:hover {
     background: linear-gradient(90deg,#ff8a00,#da0909);
     text-shadow: none;
     -webkit-text-fill-color: transparent;
@@ -90,11 +92,11 @@
     border-color: #3498db;
 }
 
-.tags .Visitbtn {
+.Visitbtn {
     background-color: #1a1b1b;
     border-radius: 50px;
 }
 
-.tags .Visitbtn:focus {
+.Visitbtn:focus {
     outline: none;
 }
