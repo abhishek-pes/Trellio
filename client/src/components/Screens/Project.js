@@ -38,7 +38,7 @@ function Post() {
   var search = responses
     .map((res) => res.techStack)
     .map((res) => res)
-    .filter((s) => s.includes(searchdata));
+    .filter((s) => s.toLowerCase().includes(searchdata.toLowerCase()));
   search = Array.from( new Set(search))
   // console.log(search)
   // const finaldata = responses.filter((res)=> res.techStack == (search.map((s)=>s)) )
