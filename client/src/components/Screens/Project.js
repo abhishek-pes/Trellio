@@ -12,7 +12,7 @@ function Post() {
   const [searchdata, setSearchData] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/auth", {
+    fetch("/api/auth", {
       method: "get",
       headers: {
         "x-auth-token": localStorage.getItem("token"),
@@ -32,7 +32,7 @@ function Post() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/profile")
+    fetch("/api/profile")
       .then((res) => res.json())
       .then((res) => setResponses(res));
   }, []);
