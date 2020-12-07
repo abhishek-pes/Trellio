@@ -4,10 +4,10 @@ body
 }
 
 
-.header {
+.headert {
     padding: 80px; /* some padding */
     text-align: center; /* center the text */
-    background: #1abc9c; /* green background */
+    background :#222; /* green background */
     color: white; /* white text color */
     width: auto;
    }
@@ -69,11 +69,10 @@ body
     padding: 20px; /* Some padding */
     font-size: 20px;
     font-family: 'Handlee', cursive;
-
   }
   .button {
     display: inline-block;
-    border-radius: 4px;
+    border-radius: 6px;
     background-color: #f4511e;
     border: none;
     color: #FFFFFF;
@@ -126,8 +125,10 @@ body
     vertical-align: auto;
   }
   .buttons{
-    margin-left: 240px;
+    margin-left: 20px;
     display: inline-block;
+    padding: 10px;
+
   }
   .heart {
     width: 400px;
@@ -147,4 +148,10 @@ body
     margin-top: 3%;
     margin-left: 50%;
   }
-  
+
+.colabimg img{
+  height: 500px;
+  width: 100%; 
+  border-radius: 5px;
+
+}

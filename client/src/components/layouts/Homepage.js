@@ -4,6 +4,8 @@ import logo from './images/icon.svg';
 import {Link} from "react-router-dom";
 import Navbar from './Navbar'
 import {authContext} from '../../context/auth-context'
+import collab1 from './images/collab1.jpg';
+
 export const Homepage = () => {
   const auth = useContext(authContext)
   useEffect(()=>{
@@ -24,13 +26,11 @@ export const Homepage = () => {
         </div>
         <Navbar />
         <div className ="title">
-        <h1 className="heart">ABOUT TRELLIO</h1>
         </div>
         <div className="main" id="about_page">
-            <div className="about">
-                Trellio is a platform where fellow developers can meet , connect and collaborate. Developers can post their project ideas
-                and other fellow developers can view the project ideas and conncet to work on it.
-            </div>
+        <div className="colabimg">
+        <img src={collab1} /> 
+        </div>
             <span className="buttons">
             <Link to="/Register">
             <button className="button"><span>REGISTER</span></button></Link>

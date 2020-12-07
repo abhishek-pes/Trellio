@@ -11,7 +11,7 @@ function Todo(){
 
     function getTask()
     {
-    fetch("/api/todo/tasks",{
+    fetch("http://localhost:5000/api/todo/tasks",{
         method:"get",
         headers:{
             "x-auth-token":localStorage.getItem('token')
@@ -36,7 +36,7 @@ function Todo(){
         try {
           event.preventDefault();
     
-          fetch("/api/todo/", {
+          fetch("http://localhost:5000/api/todo/", {
             method: "post",
     
             body: JSON.stringify({
@@ -69,7 +69,7 @@ function Todo(){
     const Completed = (tid) => {
         try{
             // console.log(tid)
-            const url = "/api/todo/delete/"+tid
+            const url = "http://localhost:5000/api/todo/delete/"+tid
             fetch(url, {
     
             method: "delete",

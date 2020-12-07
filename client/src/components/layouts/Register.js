@@ -16,7 +16,7 @@ function Register() {
         try{
         event.preventDefault()
 
-        fetch("/api/users", {
+        fetch("http://localhost:5000/api/users", {
 
         method: "post",
 
@@ -30,17 +30,18 @@ function Register() {
         .then((res) => res.json())
         .then(res => {
           try{
-            alert((res.error[0].msg))
-            }
-            catch{
-              alert("User Created")
-              history.push("/Login")
-  
-            }
+          alert((res.error[0].msg))
+          }
+          catch{
+            alert("User Created")
+            history.push("/Login")
+
+          }
+            
         })
     }
     catch(err){            
-      alert('USER ALREADY EXISTS')
+      alert(err.message)
   }
 
      }
@@ -52,15 +53,15 @@ function Register() {
         <h1>Sign Up</h1>
         <input type="text" name="" placeholder="Username" required onChange = {(e) =>setName(e.target.value)}></input>
         <input type="email" name="" placeholder="E-mail" onChange = {(e) => {setEmail(e.target.value)}}></input>
-        <input type="password" name="" placeholder="Password" pattern=".{6,}" title="6 character minimum" onChange ={(e)=>{setPassword(e.target.value)}}></input>
+        <input type="password" name="" placeholder="Password" pattern=".{6,}" title="6 characters minimum" onChange ={(e)=>{setPassword(e.target.value)}}></input>
         <input type="submit" name="" value="Register"></input>
         <p>
           Already have an account? <Link to="/Login">Sign in</Link>
         </p>
       </form>
-      <footer>
+      <header>
                     <Link to="/"><img src={logo} height="70px" width="70px" alt="icon"></img></Link>
-      </footer>
+      </header>
     </div>
   );
 }

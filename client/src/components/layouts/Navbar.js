@@ -8,7 +8,7 @@ function Navbar() {
     return (
         <div className="navbar">
             {!auth.isLoggedIn && (
-            <a href="#about_page">ABOUT</a>
+            <Link to = "/About">ABOUT</Link>
             )}
             <Link to = '/Learn'>LEARN</Link>
             {!auth.isLoggedIn && (

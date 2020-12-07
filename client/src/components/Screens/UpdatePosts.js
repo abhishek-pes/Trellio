@@ -17,7 +17,7 @@ function UpdatePosts() {
     try {
       event.preventDefault();
 
-      fetch("/api/profile/update/"+localStorage.getItem("pid"), {
+      fetch("http://localhost:5000/api/profile/update/"+localStorage.getItem("pid"), {
         method: "post",
 
         body: JSON.stringify({

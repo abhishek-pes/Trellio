@@ -10,6 +10,8 @@ import Project from './components/Screens/Project'
 import Myprojects from './components/Screens/Myprojects'
 import UpsatePosts from './components/Screens/UpdatePosts'
 import Todo from './components/Screens/Todo'
+import Footer from './footer'
+import About from './components/layouts/About'
 
 function App() {
 const [isLoggedIn, setIsLoggedIn] = useState()
@@ -47,6 +49,7 @@ if(isLoggedIn)
           <Route exact path = "/Register" component={Register}/>
           <Route exact path = "/Login" component = {Login}/>
           <Route exact path = "/Learn" component = {Learn}/>
+          <Route exact path = "/About" component  = {About}/>
           <Redirect to = '/'></Redirect>
         </Switch>
   )
@@ -56,7 +59,7 @@ if(isLoggedIn)
       <authContext.Provider value= {{isLoggedIn : isLoggedIn , login : login , logout : logout}}>
         <Router>
         <Route exact path = "/" component={Homepage}/>
-
+        <Footer/>
         <main>
           {routes}
         </main>

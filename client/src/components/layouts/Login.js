@@ -2,7 +2,8 @@ import React, {useContext,useState} from 'react'
 import "./login.css";
 import {Link} from 'react-router-dom';
 import {authContext} from '../../context/auth-context'
-import logo from './images/icon.svg'; 
+import logo from './images/icon.svg';
+ 
 function Login() {
     const auth = useContext(authContext)
     const [email,setEmail] = useState('')
@@ -14,7 +15,7 @@ function Login() {
         try{
         event.preventDefault()
 
-        fetch("/api/auth", {
+        fetch("http://localhost:5000/api/auth", {
 
         method: "post",
 
@@ -27,7 +28,7 @@ function Login() {
         })
         .then((res) => res.json())
         .then(res => {
-            console.log(res)
+            //console.log(res)
             if(res.token)
             {
                 localStorage.setItem('token',res.token)
@@ -37,7 +38,9 @@ function Login() {
             else{alert('INVALID CREDENTIALS')}
         })
     }
-    catch(err){}
+    catch(err){
+        alert(err.message)
+    }
 
      }
     
@@ -50,9 +53,9 @@ function Login() {
                <input type="submit" name="" value="Login"></input>
                 <p>Don't have an account? <Link to="/Register">Register</Link></p>
             </form>
-            <footer>
+            <header>
                     <Link to="/"><img src={logo} height="70px" width="70px" alt="icon"></img></Link>
-            </footer>
+            </header>
         </div>
             
     )

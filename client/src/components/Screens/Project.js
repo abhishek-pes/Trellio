@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SideNav from "./SideNav";
 import "./Project.css";
-import "./search.css"
+import "./search.css";
+import MailOutlineIcon from '@material-ui/icons/MailOutlineTwoTone';
+import PageviewIcon from '@material-ui/icons/GitHub';
 
 
 function Post() {
@@ -10,7 +12,7 @@ function Post() {
   const [searchdata, setSearchData] = useState("");
 
   useEffect(() => {
-    fetch("/api/auth", {
+    fetch("http://localhost:5000/api/auth", {
       method: "get",
       headers: {
         "x-auth-token": localStorage.getItem("token"),
@@ -30,7 +32,7 @@ function Post() {
   }
 
   useEffect(() => {
-    fetch("/api/profile")
+    fetch("http://localhost:5000/api/profile")
       .then((res) => res.json())
       .then((res) => setResponses(res));
   }, []);
@@ -41,9 +43,10 @@ function Post() {
     .filter((s) => s.toLowerCase().includes(searchdata.toLowerCase()));
   search = Array.from( new Set(search))
   // console.log(search)
-  // const finaldata = responses.filter((res)=> res.techStack == (search.map((s)=>s)) )
+  const testdata = search.map((s) => s);
+  // console.log("DATA : " + testdata);
+  // const finaldata = responses.filter((res)=> testdata.includes(res.techStack) )
   // console.log(finaldata)
-
   //console.log("search query: "+ searchdata)
   // if(!searchdata)
   // {
@@ -100,14 +103,15 @@ function Post() {
                   <hr></hr>
                   <div className="tags4">
                     <a href={mailser}>
-                      <button className="random">Connect</button>
+                    <MailOutlineIcon style={{fontSize:"50px"}}></MailOutlineIcon>
                     </a>
                     <a
                       href={response.git}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <button className="random">View Project</button>
+                      &nbsp; &nbsp; &nbsp; &nbsp;
+                      <PageviewIcon style={{fontSize:"50px"}}></PageviewIcon>
                     </a>
                   </div>
                 </div>
@@ -118,7 +122,7 @@ function Post() {
         
       {
         // eslint-disable-next-line
-        searchdata &&responses.filter((res) => res.techStack == search.map((s) => s)).map((response) => {
+        searchdata && responses.filter((res) => testdata.includes(res.techStack)).map((response) => {
           const mailser = "mailto:" + response.user.email;
           return (
             <div className="cards5" key={response._id}>
@@ -142,16 +146,19 @@ function Post() {
                   <hr></hr>
                   <div className="tags4">
                     <a href={mailser}>
-                      <button className="random">Connect</button>
+                      {/* <button className="random">Mail</button> */}
+                      <MailOutlineIcon style={{fontSize:"50px"}}></MailOutlineIcon>
                     </a>
                     <a
                       href={response.git}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <button className="random">View Project</button>
+                      &nbsp; &nbsp; &nbsp; &nbsp;
+                      <PageviewIcon style={{fontSize:"50px"}}></PageviewIcon>
                     </a>
                   </div>
+                  
                 </div>
               </div>
             </div>

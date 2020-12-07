@@ -88,11 +88,13 @@ img{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 4px 2px 4px 2px;
     cursor: pointer;
     margin-left: 1.4%;
-
 }
+
+
+
 
 .tags4 button:hover {
     background: linear-gradient(90deg,#ff8a00,#e52e71);
@@ -266,3 +268,4 @@ body {
 .author-name-1{
     color: white;
 }
+
