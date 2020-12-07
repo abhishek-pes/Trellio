@@ -69,7 +69,7 @@ function Todo(){
     const Completed = (tid) => {
         try{
             // console.log(tid)
-            const url = "http://localhost:5000/api/todo/delete/"+tid
+            const url = "/api/todo/delete/"+tid
             fetch(url, {
     
             method: "delete",
